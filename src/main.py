@@ -1,3 +1,4 @@
+import argparse
 from urllib.parse import urlparse
 from bs4 import BeautifulSoup
 import requests
@@ -55,6 +56,15 @@ def save_to_file(markdown_text, filename):
 
 
 if __name__ == '__main__':
-    url = input('Input URL: ')
-    html = load_html(url)
-    save_to_file(html)
+    parser = argparse.ArgumentParser(description="Converts HTML page to Markdown and saves to file.")
+    parser.add_argument('url', type=str, help="URL page to convert")
+    parser.add_argument('-o', '--output', type=str, default='output.md', help="Output file name (default: output.md)")
+    args = parser.parse_args()
+
+    if not is_valid_url(args.url):
+        logging.error("Incorrect URL")
+        exit(1)
+
+    markdown_text = load_html(args.url)
+    if markdown_text:
+        save_to_file(markdown_text, args.output)
