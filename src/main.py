@@ -1,9 +1,12 @@
+from urllib.parse import urlparse
 from bs4 import BeautifulSoup
 import requests
 import markdownify
 import logging
 
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+
+
 def load_html(source_url):
     """
     Loads the HTML code at the specified URL and converts it to Markdown.
@@ -20,6 +23,20 @@ def load_html(source_url):
     except requests.RequestException as e:
         logging.error(f"Error loading URL: {e}")
         return None
+
+
+def is_valid_url(url):
+    """
+    Checks if a string is a valid URL.
+
+    :param url: The string to check
+    :return: True if the URL is valid, False otherwise
+    """
+    try:
+        result = urlparse(url)
+        return all([result.scheme, result.netloc])
+    except ValueError:
+        return False
 
 
 def save_to_file(markdown_text, filename):
