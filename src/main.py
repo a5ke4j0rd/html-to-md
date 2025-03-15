@@ -1,4 +1,5 @@
 import argparse
+from typing import Any
 from urllib.parse import urlparse
 from bs4 import BeautifulSoup
 import requests
@@ -8,7 +9,7 @@ import logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
 
-def load_html(source_url):
+def load_html(source_url: str) -> Any | None:
     """
     Loads the HTML code at the specified URL and converts it to Markdown.
 
@@ -26,7 +27,7 @@ def load_html(source_url):
         return None
 
 
-def is_valid_url(url):
+def is_valid_url(url: str) -> bool:
     """
     Checks if a string is a valid URL.
 
@@ -40,16 +41,16 @@ def is_valid_url(url):
         return False
 
 
-def save_to_file(markdown_text, filename):
+def save_to_file(markdown_src: str, filename: str):
     """
     Saves text in Markdown format to a file.
 
-    :param markdown_text: Text to save
+    :param markdown_src: Text to save
     :param filename: File name to save
     """
     try:
         with open(filename, 'w', encoding='utf-8') as file:
-            file.write(markdown_text)
+            file.write(markdown_src)
         logging.info(f"File saved successfully as: {filename}")
     except IOError as e:
         logging.error(f"Error saving file: {e}")
