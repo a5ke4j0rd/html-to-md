@@ -1,8 +1,8 @@
 # Converter HTML to Markdown
 ![Header image](https://github.com/a5ke4j0rd/html-to-md/blob/main/logo.jpg)
 
-Easily convert your website to a Markdown file. Very useful if you need to outline articles for GitHub or other applications that support Markdown styles. 
-The application was written using the markdownify library by @matthewwithanm
+Easily convert your website to a Markdown file. Very useful if you need to outline articles for GitHub or other applications that support Markdown styles.<br>
+The application was written using the markdownify library by [@matthewwithanm](https://github.com/matthewwithanm)
 
 ## Usage
 
