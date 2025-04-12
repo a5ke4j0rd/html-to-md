@@ -16,7 +16,7 @@ python main.py https://en.wikipedia.org/wiki/Burzum -o burzum.md
 
 - `url` ➤ URL page to convert
   
-- `-h, --help` ➤ show this help message and exit
+- `-h`, `--help` ➤ show this help message and exit
   
 - `-o`, `--output` ➤ Output file name (default: output.md)
   
